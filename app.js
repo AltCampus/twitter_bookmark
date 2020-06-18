@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === "development") {
 }
 // connect to database
 mongoose.connect(
-  "mongodb://localhost/cart",
+  "mongodb://localhost/twitterBookmarked",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
