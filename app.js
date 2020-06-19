@@ -44,6 +44,18 @@ if (process.env.NODE_ENV === "development") {
 }
 
 require("./modules/twitterAuth");
+// connect to database
+mongoose.connect(
+  "mongodb://localhost/twitterBookmarked",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    console.log(err ? err : "connected to db");
+  }
+);
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
