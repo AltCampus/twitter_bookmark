@@ -10,4 +10,27 @@ getUserDetails = async (req, res, next) => {
 	res.status(200).json({ user, message: "success" });
 };
 
-module.exports = { getUserDetails };
+createUser = async (user, category) => {
+	var findUser = await User.findOne({ twitterUserId: user.id_str });
+	if (!findUser) {
+		var userBody = {
+			name: user.name,
+			handle: user.screen_name,
+			image: user.profile_image_url_https,
+			bannerImage: user.profile_banner_url,
+			twitterUserId: user.id_str,
+		};
+		var user = await new User(userBody);
+		user.categories.push(category);
+		await user.save();
+		console.log(user);
+		return user;
+	} else if (!findUser.categories.includes(category)) {
+		findUser.categories.push(category);
+		findUser = await findUser.save();
+		console.log("###########", findUser);
+	}
+	return findUser;
+};
+
+module.exports = { getUserDetails, createUser };

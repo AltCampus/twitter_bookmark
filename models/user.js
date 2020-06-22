@@ -5,10 +5,9 @@ var UserSchema = new Schema(
 	{
 		name: String,
 		handle: String,
-		token: String,
-		secretToken: String,
 		image: String,
 		bannerImage: String,
+		twitterUserId: String,
 		categories: {
 			type: Array,
 			default: ["Education", "Sports", "Self Help"],

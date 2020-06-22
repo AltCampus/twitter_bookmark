@@ -39,6 +39,7 @@ mongoose.connect(
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
+		useFindAndModify: false,
 	},
 	(err) => {
 		console.log(err ? err : "connected to db");

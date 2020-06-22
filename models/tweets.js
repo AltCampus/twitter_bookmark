@@ -7,6 +7,9 @@ var tweetSchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: "User",
 		},
+		twitterUserId: {
+			type: String,
+		},
 		category: {
 			type: String,
 			required: true,
