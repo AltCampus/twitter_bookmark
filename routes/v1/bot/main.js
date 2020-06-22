@@ -9,26 +9,23 @@ const { createUser } = require("../../../controller/users");
 const getMentions = async () => {
 	try {
 		var sinceId = await SinceId.find();
-		console.log(sinceId);
-		var url = sinceId.length
-			? `statuses/mentions_timeline.json?since_id=${sinceId[0].last_since_id}`
-			: `statuses/mentions_timeline`;
+
+		var url =
+			// sinceId.length ? `statuses/mentions_timeline.json?since_id=${sinceId[0].last_since_id}`:
+			`statuses/mentions_timeline`;
 
 		var res = await Twitter.get(url);
-		console.log(res.data);
 		var latestSinceId = res.data.length && res.data[0].id_str;
 		if (!sinceId.length) {
 			sinceId = await SinceId.create({
 				last_since_id: latestSinceId,
 			});
-			console.log("*****", sinceId);
 		} else if (latestSinceId) {
 			sinceId = await SinceId.findByIdAndUpdate(
 				sinceId._id,
 				{ last_since_id: latestSinceId },
 				{ new: true }
 			);
-			console.log("^^^^^^^", sinceId);
 		}
 
 		var bookmarks = res.data.filter((tweet) => validateBookmark(tweet));
@@ -48,12 +45,14 @@ const getMentions = async () => {
 				twitterUserId: bookmark.user.id_str,
 				category: category,
 			};
-			// var tweet = await Tweet.create(tweetBody);
+			await Tweet.create(tweetBody);
 		});
 	} catch (error) {
 		console.log(error);
 	}
 };
+
+
 
 function validateBookmark(tweet) {
 	var status;
@@ -72,20 +71,3 @@ function validateBookmark(tweet) {
 }
 
 module.exports = getMentions;
-
-// Twitter.get(
-//   `statuses/show.json?id=${data[0].in_reply_to_status_id_str}`,
-//   (err, res) => {
-//     console.log(
-//       "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-//     );
-//     if (err) {
-//       console.log(err);
-//     } else if (res) {
-//       console.log(
-//         res,
-//         "--------------------------------------------------------"
-//       );
-//     }
-//   }
-// );
