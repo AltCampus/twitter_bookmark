@@ -12,15 +12,11 @@ class Token extends React.Component {
     console.log(token);
     var token = await this.props.dispatch(getUserInfo(token));
     if (token.status) {
-      this.props.history.push("/");
+      this.props.history.push("/api/v1/tweets/list");
     }
   }
   render() {
-    return (
-      <div class="spinner-border text-success" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    );
+    return <> token page</>;
   }
 }
 function mapStateToProps(state) {

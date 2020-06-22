@@ -8,10 +8,13 @@ var passport = require("passport");
 var cors = require("cors");
 var session = require("express-session");
 
+require("dotenv").config();
+var config = require("./modules/botconfig");
+var getMentions = require("./routes/v1/bot/main.js");
+
 var indexRouter = require("./routes/v1/index");
 var usersRouter = require("./routes/v1/users");
-
-require("dotenv").config();
+var tweetsRouter = require("./routes/v1/tweet");
 
 var app = express();
 
@@ -38,6 +41,7 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   },
   (err) => {
     console.log(err ? err : "connected to db");
@@ -65,7 +69,10 @@ app.use(
 
 app.use(passport.initialize());
 
+setInterval(getMentions, 60000);
+
 app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/tweets", tweetsRouter);
 
 app.use("/", indexRouter);
 
