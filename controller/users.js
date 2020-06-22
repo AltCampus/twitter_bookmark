@@ -1,7 +1,6 @@
 var User = require("../models/user");
 
 getUserDetails = async (req, res, next) => {
-	// console.log(req.userId);
 	var user = await User.findById(req.userId);
 	if (!user) {
 		res.status(404).json({ message: "user not found" });
@@ -28,7 +27,6 @@ createUser = async (user, category) => {
 	} else if (!findUser.categories.includes(category)) {
 		findUser.categories.push(category);
 		findUser = await findUser.save();
-		console.log("###########", findUser);
 	}
 	return findUser;
 };
