@@ -8,18 +8,6 @@ var passport = require("passport");
 var cors = require("cors");
 var session = require("express-session");
 
-// connect to database
-mongoose.connect(
-  "mongodb://localhost/bookmarkedTweets",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    console.log(err ? err : "connected to db");
-  }
-);
-
 var indexRouter = require("./routes/v1/index");
 var usersRouter = require("./routes/v1/users");
 
@@ -55,7 +43,6 @@ mongoose.connect(
     console.log(err ? err : "connected to db");
   }
 );
-
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

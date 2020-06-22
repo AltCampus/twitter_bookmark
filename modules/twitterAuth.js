@@ -11,7 +11,7 @@ passport.use(
     },
     function (token, tokenSecret, profile, cb) {
       var details = profile._json;
-      User.findOne({ name: details.username }, (error, user) => {
+      User.findOne({ handle: details.screen_name }, (error, user) => {
         if (user) {
           return cb(error, user);
         } else {

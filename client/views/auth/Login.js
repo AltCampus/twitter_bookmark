@@ -1,5 +1,7 @@
 import React from "react";
 import { FaTwitter } from "react-icons/fa";
+
+import { twitterLoginIcon } from "../assets/image/image";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -8,16 +10,22 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <section className="bg_login">
-          <div className="container">
+        <section className="bg_login align-middle">
+          <div className="container border border-primary">
             {this.props.error ? alert(this.props.error) : ""}
 
-            <div className="row">
-              <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div className="row ">
+              <div className="col-sm-9 col-md-7 col-lg-5 mx-auto ">
                 <div className="card card-signin my-5">
+                  <h5 className="card-title text-center">Sign In</h5>
+                  <div className="login_image_section">
+                    <img
+                      src="/images/twitter.svg"
+                      className="card-img-top responsive_img"
+                      alt="login "
+                    />
+                  </div>
                   <div className="card-body">
-                    <h5 className="card-title text-center">Sign In</h5>
-
                     <a
                       href="/api/v1/users/auth/twitter"
                       className="btn btn-lg btn_twitter btn-block text-uppercase"
