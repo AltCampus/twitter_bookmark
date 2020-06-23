@@ -1,0 +1,21 @@
+// Circular Button
+.circular_button {
+	display: flex;
+	justify-content: center;
+	width: 75%;
+	align-items: center;
+	font-size: 0.9rem;
+	font-weight: 600;
+	line-height: 1;
+	opacity: 1;
+	color: #3a3b3bef;
+	cursor: pointer;
+	padding: 0.7rem 1rem;
+	margin-bottom: 1.5rem;
+	border: 1px solid #1091e0a6;
+	border-radius: 2rem;
+	transition: all 100ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+	&:hover {
+		box-shadow: 0 4px 8px rgba(31, 31, 31, 0.2);
+	}
+}

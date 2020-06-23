@@ -7,6 +7,7 @@ import Login from "./auth/Login";
 import List from "./auth/List";
 import "./assets/stylesheets/main.scss";
 import Token from "./auth/Token";
+import ListBookmarks from "./bookmarks/ListBookmarks.js";
 import getUserInfo from "../redux/actions/userAction";
 
 class App extends React.Component {
@@ -26,7 +27,7 @@ class App extends React.Component {
 				{console.log("inside app js")}
 				<Switch>
 					<Route exact path="/" component={HomePage} />
-					<Route exact path="/list" component={List} />
+					<Route exact path="/list" component={ListBookmarks} />
 					<Route exact path="/oauth/:token" component={Token} />
 					<Route exact path="/login" component={Login} />
 				</Switch>
