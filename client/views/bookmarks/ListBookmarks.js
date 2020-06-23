@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Button from "../Common/Button.js";
+import StadiumButton from "../Common/StadiumButton.js";
 import "../assets/stylesheets/bookmarks.scss";
 
 class ListBookmarks extends Component {
@@ -11,10 +11,10 @@ class ListBookmarks extends Component {
 						<div className="category-container">
 							<h2 className="heading">Categories</h2>
 							<div className="categories">
-								<Button name={"Education"} />
-								<Button name={"Sports"} />
-								<Button name={"Productivity"} />
-								<Button name={"Technology"} />
+								<StadiumButton name={"Education"} />
+								<StadiumButton name={"Sports"} />
+								<StadiumButton name={"Productivity"} />
+								<StadiumButton name={"Technology"} />
 							</div>
 						</div>
 						<div className="tweets-container">tweets</div>
