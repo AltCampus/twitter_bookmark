@@ -1,4 +1,24 @@
+.bg_login {
+  height: 100vh;
+  background-color: #1da0f21f;
+}
+
 .btn_twitter {
   background-color: #1da1f2 !important;
   color: white !important;
+  transition: all 400ms;
+}
+.btn_twitter:hover {
+  background-color: white !important;
+  color: #1da1f2 !important;
+  transition: all 400ms;
+}
+
+.responsive_img {
+  width: 100%;
+  height: 100%;
+}
+.card-signin {
+  background-color: #1da0f211 !important;
+  border-color: #1da1f2 !important ;
 }
