@@ -5,4 +5,4 @@ function StadiumButton(props) {
 	return <div className="circular_button">{props.name}</div>;
 }
 
-export default Button;
+export default StadiumButton;
