@@ -11,15 +11,15 @@ passport.use(
     },
     function (token, tokenSecret, profile, cb) {
       var details = profile._json;
-      User.findOne({ name: details.username }, (error, user) => {
+      User.findOne({ name: details.id_str }, (error, user) => {
         if (user) {
+          console.log(user);
           return cb(error, user);
         } else {
           var user = {
             name: details.name,
             handle: details.screen_name,
-            token: token,
-            secretToken: tokenSecret,
+            twitterUserId: details.id_str,
             image: details.profile_image_url_https,
             bannerImage: details.profile_banner_url,
           };
