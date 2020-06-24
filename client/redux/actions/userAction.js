@@ -11,6 +11,7 @@ setTokenToAxios();
 const getUserInfo = (token) => {
   return async (dispatch) => {
     // console.log("insideUpdateUser", data);
+    dispatch({ type: "FETCH_CURRENT_USER_START" });
     setTokenToAxios(token);
     try {
       let user = await axios.get(`http://localhost:3000/api/v1/users/info`);
