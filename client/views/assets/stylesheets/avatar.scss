@@ -1,0 +1,13 @@
+.avatar_container {
+  display: flex;
+  .user_name {
+    color: rgba(32, 32, 32, 0.801);
+    p {
+      margin: 0 !important;
+    }
+  }
+  .user_handle {
+    font-size: 13px;
+    color: rgba(32, 32, 32, 0.801);
+  }
+}
