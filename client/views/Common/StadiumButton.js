@@ -2,7 +2,14 @@ import React from "react";
 import "../assets/stylesheets/common.scss";
 
 function StadiumButton(props) {
-  return <div className="rounded-pill circular_button">{props.name}</div>;
+	return (
+		<div
+			onClick={() => props.selectCategory(props.name)}
+			className="rounded-pill circular_button"
+		>
+			{props.name}
+		</div>
+	);
 }
 
 export default StadiumButton;
