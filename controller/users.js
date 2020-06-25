@@ -1,11 +1,10 @@
 var User = require("../models/user");
 
 getUserDetails = async (req, res, next) => {
-	var user = await User.findById(req.userId);
+	var user = await User.findOne({ twitterUserId: req.twitterUserId });
 	if (!user) {
 		res.status(404).json({ message: "user not found" });
 	}
-	console.log(user);
 	res.status(200).json({ user, message: "success" });
 };
 

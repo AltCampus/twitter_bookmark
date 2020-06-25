@@ -5,8 +5,7 @@ module.exports = {
 		try {
 			var payload = {
 				userId: user._id,
-				access_token: user.token,
-				tokenSecret: user.secretToken,
+				twitterUserId: user.twitterUserId,
 			};
 			var token = await jwt.sign(payload, process.env.SECRET);
 			return token;
@@ -21,9 +20,7 @@ module.exports = {
 			if (token) {
 				var payload = await jwt.verify(token, process.env.SECRET);
 				req.userId = payload.userId;
-				req.access_token = payload.access_token;
-				req.secretToken = payload.tokenSecret;
-				req.token = token;
+				req.twitterUserId = payload.twitterUserId;
 				next();
 			} else {
 				res.status(400).json({ err: "token required" });

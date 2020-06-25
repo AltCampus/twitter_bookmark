@@ -19,7 +19,7 @@ class ListBookmarks extends Component {
 		var userInfo = !this.props.user.isAuthReqInProgress
 			? this.props.user.userInfo
 			: "null";
-
+		console.log(userInfo);
 		return (
 			<>
 				{userInfo ? (

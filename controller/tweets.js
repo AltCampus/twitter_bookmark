@@ -3,7 +3,9 @@ const Tweet = require("../models/tweets.js");
 module.exports = {
 	listTweets: async (req, res, next) => {
 		try {
-			const tweets = await Tweet.find({});
+			const tweets = await Tweet.find({
+				authorId: req.userId,
+			});
 			if (!tweets.length) {
 				return res
 					.status(404)

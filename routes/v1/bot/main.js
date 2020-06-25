@@ -45,7 +45,11 @@ const getMentions = async () => {
 				twitterUserId: bookmark.user.id_str,
 				category: category,
 			};
+
 			await Tweet.create(tweetBody);
+			console.log(
+				"-------------------------------- -------------------------------------"
+			);
 		});
 	} catch (error) {
 		console.log(error);
