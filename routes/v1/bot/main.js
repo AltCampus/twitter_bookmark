@@ -8,21 +8,23 @@ const { createUser } = require("../../../controller/users");
 
 const getMentions = async () => {
 	try {
-		var sinceId = await SinceId.find();
+		var sinceId = await SinceId.find({});
 
 		var url = sinceId.length
 			? `statuses/mentions_timeline.json?since_id=${sinceId[0].last_since_id}`
 			: `statuses/mentions_timeline`;
 
 		var res = await Twitter.get(url);
+		// console.log(res, "%%%%%%%%%%%%%%%%%%%%%%");
 		var latestSinceId = res.data.length && res.data[0].id_str;
+
 		if (!sinceId.length) {
-			sinceId = await SinceId.create({
+			await SinceId.create({
 				last_since_id: latestSinceId,
 			});
 		} else if (latestSinceId) {
-			sinceId = await SinceId.findByIdAndUpdate(
-				sinceId._id,
+			await SinceId.findByIdAndUpdate(
+				sinceId[0]._id,
 				{ last_since_id: latestSinceId },
 				{ new: true }
 			);
@@ -34,7 +36,7 @@ const getMentions = async () => {
 			var bookmarkTweet = await Twitter.get(
 				`statuses/show.json?id=${bookmark.in_reply_to_status_id_str}`
 			);
-			console.log(bookmarkTweet);
+
 			var user;
 			if (bookmarkTweet) {
 				user = await createUser(bookmark.user, category);
