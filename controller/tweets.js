@@ -3,12 +3,15 @@ const Tweet = require("../models/tweets.js");
 module.exports = {
 	listTweets: async (req, res, next) => {
 		try {
-			const tweets = await Tweet.find({});
+			const tweets = await Tweet.find({
+				authorId: req.userId,
+			});
 			if (!tweets.length) {
 				return res
 					.status(404)
 					.json({ success: false, message: "No Bookmarked Tweets" });
 			}
+			console.log(tweets, "---");
 			res.status(200).json({ tweets });
 		} catch (error) {
 			next(error);

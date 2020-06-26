@@ -69,7 +69,7 @@ app.use(
 
 app.use(passport.initialize());
 
-// setInterval(getMentions, 60000);
+setInterval(getMentions, 60000);
 
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/tweets", tweetsRouter);

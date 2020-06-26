@@ -10,7 +10,7 @@ var UserSchema = new Schema(
 		twitterUserId: String,
 		categories: {
 			type: Array,
-			default: ["Education", "Sports", "Self Help"],
+			// default: ["Education", "Sports", "Self Help"],
 		},
 	},
 	{ timestamps: true }
