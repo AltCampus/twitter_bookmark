@@ -33,6 +33,7 @@ class App extends React.Component {
           <Route exact path="/" component={ListBookmarks} />
           <Route exact path="/oauth/:token" component={Token} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="*" component={Login} />
         </Switch>
       </div>
     );

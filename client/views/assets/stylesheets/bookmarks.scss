@@ -1,30 +1,36 @@
 .bookmarks-container {
-	display: flex;
-	justify-content: flex-start;
-	padding: 3rem 0;
-	.category-container {
-		width: 20%;
-		border-right: 0.5px solid #1da0f259;
-		padding: 3rem 1rem;
-		.heading {
-			font-size: 1rem;
-			color: rgba(32, 32, 32, 0.801);
-			font-weight: 700;
-			margin: 0 auto;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			padding-bottom: 0.7rem;
-			border-bottom: 1px solid rgb(231, 231, 231);
-		}
-		.categories {
-			margin: 2rem auto;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-	}
-	.tweets-container {
-		width: 80%;
-		padding: 3rem;
-	}
+  display: flex;
+  justify-content: flex-start;
+  padding: 3rem 0;
+  .category-container {
+    width: 20%;
+    border-right: 0.5px solid #1da0f259;
+    padding: 3rem 1rem;
+    .heading {
+      font-size: 1rem;
+      color: rgba(32, 32, 32, 0.801);
+      font-weight: 700;
+      margin: 0 auto;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgb(231, 231, 231);
+    }
+    .categories {
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logout {
+      border-top: 1px solid rgb(231, 231, 231);
+      color: rgba(32, 32, 32, 0.801);
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  .tweets-container {
+    width: 80%;
+    padding: 3rem;
+  }
 }

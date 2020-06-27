@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { AiOutlineLogout } from "react-icons/ai";
+
 import StadiumButton from "../Common/StadiumButton.js";
 import Card from "../tweetCard/card.js";
 import Avatar from "../tweetCard/avatar.js";
 import getTweets from "../../redux/actions/bookmarkAction";
 
 class ListBookmarks extends Component {
+  handleLogout = () => {
+    console.log("logout");
+    localStorage.clear();
+    this.props.history.push("/login");
+  };
   handleClick = (name) => {
     this.props.dispatch({ type: "CHANGE_CATEGORY", payload: name });
   };
@@ -42,6 +49,11 @@ class ListBookmarks extends Component {
                       );
                     })}
                   <StadiumButton selectCategory={this.handleClick} name="ALL" />
+                </div>
+                <div className="logout pt-4" onClick={this.handleLogout}>
+                  {" "}
+                  <AiOutlineLogout className="mr-2" />
+                  Logout
                 </div>
               </div>
               <div className="tweets-container">
