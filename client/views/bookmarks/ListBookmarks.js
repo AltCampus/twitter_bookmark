@@ -41,6 +41,7 @@ class ListBookmarks extends Component {
                         />
                       );
                     })}
+                  <StadiumButton selectCategory={this.handleClick} name="ALL" />
                 </div>
               </div>
               <div className="tweets-container">
