@@ -7,7 +7,6 @@ import Avatar from "./avatar";
 // import { useRouter } from "next/router";
 
 const Card = (props) => {
-	console.log(props);
 	return (
 		<>
 			{props.tweet ? (
@@ -27,7 +26,7 @@ const Card = (props) => {
 								<Link>
 									<a className="block">
 										<h3 className="mt-4 ">
-											{props.tweet.text}
+											{props.tweet.full_text}
 										</h3>
 									</a>
 								</Link>

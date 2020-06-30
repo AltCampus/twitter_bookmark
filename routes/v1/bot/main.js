@@ -15,7 +15,6 @@ const getMentions = async () => {
 			: `statuses/mentions_timeline`;
 
 		var res = await Twitter.get(url);
-		// console.log(res, "%%%%%%%%%%%%%%%%%%%%%%");
 		var latestSinceId = res.data.length && res.data[0].id_str;
 
 		if (!sinceId.length) {
@@ -34,7 +33,7 @@ const getMentions = async () => {
 			var index = bookmark.text.split(" ").indexOf("addto");
 			var category = bookmark.text.split(" ")[index + 1];
 			var bookmarkTweet = await Twitter.get(
-				`statuses/show.json?id=${bookmark.in_reply_to_status_id_str}`
+				`statuses/show.json?tweet_mode=extended&id=${bookmark.in_reply_to_status_id_str}`
 			);
 
 			var user;
@@ -49,9 +48,9 @@ const getMentions = async () => {
 			};
 
 			await Tweet.create(tweetBody);
-			console.log(
-				"-------------------------------- -------------------------------------"
-			);
+			// console.log(
+			// 	"-------------------------------- -------------------------------------"
+			// );
 		});
 	} catch (error) {
 		console.log(error);

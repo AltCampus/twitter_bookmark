@@ -21,7 +21,7 @@ createUser = async (user, category) => {
 		var user = await new User(userBody);
 		user.categories.push(category);
 		await user.save();
-		console.log(user);
+
 		return user;
 	} else if (!findUser.categories.includes(category)) {
 		findUser.categories.push(category);

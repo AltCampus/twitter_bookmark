@@ -8,6 +8,7 @@ import getTweets from "../../redux/actions/bookmarkAction";
 
 class ListBookmarks extends Component {
 	handleClick = (name) => {
+		console.log(name);
 		this.props.dispatch({ type: "CHANGE_CATEGORY", category: name });
 	};
 	componentDidMount() {
@@ -19,7 +20,7 @@ class ListBookmarks extends Component {
 		var userInfo = !this.props.user.isAuthReqInProgress
 			? this.props.user.userInfo
 			: "null";
-		console.log(userInfo);
+
 		return (
 			<>
 				{userInfo ? (
