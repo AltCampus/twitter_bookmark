@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import Avatar from "./avatar";
 
 const Card = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <>
       {props.tweet ? (

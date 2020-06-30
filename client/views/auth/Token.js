@@ -9,7 +9,6 @@ class Token extends React.Component {
   async componentDidMount() {
     var { token } = this.props.match.params;
     localStorage.setItem("login-token", token);
-    console.log(token);
     var token = await this.props.dispatch(getUserInfo(token));
     if (token.status) {
       this.props.history.push("/");

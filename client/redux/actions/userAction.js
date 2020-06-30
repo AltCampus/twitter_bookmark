@@ -20,7 +20,7 @@ const getUserInfo = (token) => {
         type: "FETCH_CURRENT_USER_SUCCESS",
         payload: user.data.user,
       });
-      console.log(user.data.user);
+      // console.log(user.data.user);
       return user;
     } catch (error) {
       dispatch({ type: "FETCH_CURRENT_USER_FAILED" });
