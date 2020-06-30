@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import format from "date-fns/format";
-// import { getTweetId, removeLinks } from "../../utils/index";
-// import Button from "./button";
+import { v4 as uuid } from "uuid";
+
 import Avatar from "./avatar";
-// import { useRouter } from "next/router";
 
 const Card = (props) => {
 	return (

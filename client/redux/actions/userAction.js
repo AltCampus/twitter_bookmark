@@ -10,6 +10,7 @@ setTokenToAxios();
 
 const getUserInfo = (token) => {
 	return async (dispatch) => {
+		// console.log("insideUpdateUser", data);
 		dispatch({ type: "FETCH_CURRENT_USER_START" });
 		setTokenToAxios(token);
 		try {
@@ -19,9 +20,10 @@ const getUserInfo = (token) => {
 				type: "FETCH_CURRENT_USER_SUCCESS",
 				payload: user.data.user,
 			});
-
+			// console.log(user.data.user);
 			return user;
 		} catch (error) {
+			dispatch({ type: "FETCH_CURRENT_USER_FAILED" });
 			return error;
 		}
 	};

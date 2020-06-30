@@ -14,30 +14,36 @@ import getUserInfo from "../redux/actions/userAction";
 import Card from "./tweetCard/card";
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
-	componentDidMount() {
-		if (localStorage["login-token"]) {
-			this.props.dispatch(getUserInfo());
-			// this.props.dispatch(getTweets());
-		}
-	}
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  componentDidMount() {
+    if (localStorage["login-token"]) {
+      this.props.dispatch(getUserInfo());
+      // this.props.dispatch(getTweets());
+    }
+  }
 
-	render() {
-		return (
-			<div className="App">
-				{console.log("inside app js")}
-				<Switch>
-					<Route exact path="/" component={ListBookmarks} />
-					{/* <Route exact path="/list" component={ListBookmarks} /> */}
-					<Route exact path="/oauth/:token" component={Token} />
-					<Route exact path="/login" component={Login} />
-				</Switch>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className="App">
+        {}
+        <Switch>
+          <Route exact path="/" component={ListBookmarks} />
+          <Route exact path="/oauth/:token" component={Token} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="*" component={Login} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default connect()(App);
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+  };
+}
+
+export default connect(mapStateToProps)(App);

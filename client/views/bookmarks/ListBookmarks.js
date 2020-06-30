@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { v4 as uuid } from "uuid";
+import { AiOutlineLogout } from "react-icons/ai";
+
 import StadiumButton from "../Common/StadiumButton.js";
 import Card from "../tweetCard/card.js";
 import Avatar from "../tweetCard/avatar.js";
 import getTweets from "../../redux/actions/bookmarkAction";
 
 class ListBookmarks extends Component {
+	handleLogout = () => {
+		console.log("logout");
+		localStorage.clear();
+		this.props.history.push("/login");
+	};
 	handleClick = (name) => {
-		console.log(name);
-		this.props.dispatch({ type: "CHANGE_CATEGORY", category: name });
+		this.props.dispatch({ type: "CHANGE_CATEGORY", payload: name });
 	};
 	componentDidMount() {
 		if (localStorage["login-token"]) {
@@ -20,7 +25,6 @@ class ListBookmarks extends Component {
 		var userInfo = !this.props.user.isAuthReqInProgress
 			? this.props.user.userInfo
 			: "null";
-
 		return (
 			<>
 				{userInfo ? (
@@ -44,10 +48,21 @@ class ListBookmarks extends Component {
 														this.handleClick
 													}
 													name={category}
-													key={uuid()}
 												/>
 											);
 										})}
+									<StadiumButton
+										selectCategory={this.handleClick}
+										name="ALL"
+									/>
+								</div>
+								<div
+									className="logout pt-4"
+									onClick={this.handleLogout}
+								>
+									{" "}
+									<AiOutlineLogout className="mr-2" />
+									Logout
 								</div>
 							</div>
 							<div className="tweets-container">
@@ -81,6 +96,7 @@ function filterByCategory(tweets, category) {
 function mapStateToProps(state) {
 	return {
 		user: state.currentUser,
+		activeCategory: state.tweets.activeCategory,
 		tweets: filterByCategory(
 			state.tweets.tweets,
 			state.tweets.activeCategory
