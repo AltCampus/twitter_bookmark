@@ -17,9 +17,8 @@ router.get(
 		failureRedirect: "/",
 	}),
 	async function (req, res) {
-		console.log(req.user);
 		var token = await jwtAuth.geneateJWT(req.user);
-		console.log(token, "token");
+
 		res.redirect(`/oauth/${token}`);
 	}
 );

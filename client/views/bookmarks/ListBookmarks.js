@@ -9,7 +9,6 @@ import getTweets from "../../redux/actions/bookmarkAction";
 
 class ListBookmarks extends Component {
 	handleLogout = () => {
-		console.log("logout");
 		localStorage.clear();
 		this.props.history.push("/login");
 	};
@@ -17,8 +16,17 @@ class ListBookmarks extends Component {
 		this.props.dispatch({ type: "CHANGE_CATEGORY", payload: name });
 	};
 	componentDidMount() {
-		if (localStorage["login-token"]) {
+		if (!localStorage["login-token"]) {
+			this.props.history.push("/login");
+		} else if (this.props.user.failedToGetUser) {
+			this.props.history.push("/login");
+		} else {
 			this.props.dispatch(getTweets());
+		}
+	}
+	componentDidUpdate() {
+		if (this.props.user.failedToGetUser) {
+			this.props.history.push("/login");
 		}
 	}
 	render() {

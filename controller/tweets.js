@@ -11,7 +11,7 @@ module.exports = {
 					.status(404)
 					.json({ success: false, message: "No Bookmarked Tweets" });
 			}
-			console.log(tweets, "---");
+
 			res.status(200).json({ tweets });
 		} catch (error) {
 			next(error);
